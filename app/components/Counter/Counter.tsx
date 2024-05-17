@@ -4,12 +4,15 @@
 import { useState } from "react";
 
 /* Instruments */
-import { useSelector, selectCount } from "@/lib/redux";
+import { useSelector, selectCount, useDispatch } from "@/lib/redux";
+import {
+  decrement, increment
+} from "./../../../lib/redux/slices/counterSlice";
 import styles from "./counter.module.css";
 
 export const Counter = () => {
   const count = useSelector(selectCount);
-
+  const dispatch = useDispatch();
   // Create a state named incrementAmount
 
   return (
@@ -20,6 +23,7 @@ export const Counter = () => {
           aria-label="Decrement value"
           onClick={() => {
             // dispatch event to decrease count by 1
+            dispatch(decrement());
           }}
         >
           -
@@ -30,6 +34,7 @@ export const Counter = () => {
           aria-label="Increment value"
           onClick={() => {
             // dispatch event to increment count by 1
+            dispatch(increment());
           }}
         >
           +
