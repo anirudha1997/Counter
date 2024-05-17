@@ -8,6 +8,7 @@ import { useSelector, selectCount, useDispatch } from "@/lib/redux";
 import {
   decrement, increment, incrementByAmount
 } from "./../../../lib/redux/slices/counterSlice";
+import { incrementIfOddAsync } from "./../../../lib/redux/slices/counterSlice/thunks";
 import styles from "./counter.module.css";
 
 export const Counter = () => {
@@ -57,7 +58,8 @@ export const Counter = () => {
         <button
           className={styles.button}
           onClick={() => {
-            // dispatch event to add incrementAmount only if count is odd
+            // Dispatch the incrementIfOddAsync thunk when "Add If Odd" button is clicked
+            dispatch(incrementIfOddAsync(incrementAmount));
           }}
         >
           Add If Odd
